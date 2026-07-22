@@ -4,7 +4,9 @@ import { useNavigate} from 'react-router-dom'
 function Loginpage(){
     const [email,setemail]= useState([""])
     const [password,setpassword] =useState()
+
     const gmailvaild =/^[a-z0-9](\.?[a-z0-9])*@gmail\.com$/
+
    const [vaild,setvalid] =useState(true)
    const [pvaild,setpvalid] =useState(true)
    const[headvaild,setheadvaild] = useState(true)
@@ -18,7 +20,7 @@ if(gmailvaild.test(value) ){
     setvalid(true)
 }else{
     setvalid(false)
-    setpvalid(true)
+    
 }
 
 
@@ -46,10 +48,10 @@ logindetail.then(function(data){
     })
   
 
-    if(password.length <4 && email.length <10){
+    if(password.length <1 && email.length <5){
     setpvalid(false)
     setevaild(false)
-    setvalid(true)
+   
 }else{
     setpvalid(true)
 
