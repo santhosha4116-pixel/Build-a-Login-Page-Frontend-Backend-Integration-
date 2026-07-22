@@ -4,19 +4,23 @@ import { useNavigate} from 'react-router-dom'
 function Loginpage(){
     const [email,setemail]= useState([""])
     const [password,setpassword] =useState()
+
     const gmailvaild =/^[a-z0-9](\.?[a-z0-9])*@gmail\.com$/
+
    const [vaild,setvalid] =useState(true)
    const [pvaild,setpvalid] =useState(true)
    const[headvaild,setheadvaild] = useState(true)
    const navigate = useNavigate()
+   const [evaild,setevaild] = useState(true)
+
 function addemail(event){
  var value =(event.target.value)
   setemail(value)
-if(gmailvaild.test(value)){
+if(gmailvaild.test(value) ){
     setvalid(true)
 }else{
     setvalid(false)
-    setpvalid(true)
+    
 }
 
 
@@ -24,7 +28,11 @@ if(gmailvaild.test(value)){
 function addpassword(event){
  var pvalue=(event.target.value)
 setpassword(pvalue)
-
+if(password.length <4 ){
+    setpvalid(false)
+}else{
+    setpvalid(true)
+}
 }
 function submit(){
 var logindetail = axios.post("http://localhost:5000/login",{"Email":email, "password":password})
@@ -40,9 +48,10 @@ logindetail.then(function(data){
     })
   
 
-    if(password.length <8 && email.length <10){
+    if(password.length <1 && email.length <5){
     setpvalid(false)
-    setvalid(true)
+    setevaild(false)
+   
 }else{
     setpvalid(true)
 
@@ -71,7 +80,7 @@ logindetail.then(function(data){
                 vaild?"":"Enter a valid Gmail address"
                 }
                    {
-                    pvaild?"":" Please Enter Gmail"
+                    evaild?"":" Please Enter Gmail"
             }
             </span>
             <p className="text-[20px] font-semibold">Password:</p>
