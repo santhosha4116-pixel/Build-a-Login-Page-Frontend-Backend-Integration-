@@ -36,7 +36,7 @@ if(password.length <4 ){
 }
 }
 function submit(){
-var logindetail = axios.post("http://localhost:5000/login",{"Email":email, "password":password})
+var logindetail = axios.post("https://loginpage-project-backend.onrender.com/login",{"Email":email, "password":password})
 logindetail.then(function(data){
       if(data.data=== true){
         navigate("/landingpage")
