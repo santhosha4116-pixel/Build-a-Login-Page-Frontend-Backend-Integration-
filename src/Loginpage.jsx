@@ -5,7 +5,8 @@ function Loginpage(){
     const [email,setemail]= useState([""])
     const [password,setpassword] =useState()
 
-    const gmailvaild =/^[a-z0-9](\.?[a-z0-9])*@gmail\.com$/
+    const gmailvaild =/^[a-z A-Z0-9 ](\.?[a-z  A-Z 0-9])*@gmail\.com$/
+    
 
    const [vaild,setvalid] =useState(true)
    const [pvaild,setpvalid] =useState(true)
@@ -44,16 +45,18 @@ logindetail.then(function(data){
          setheadvaild(false)
          setemail("")
          setpassword("")
+        
       }
     })
   
 
-    if(password.length <1 && email.length <5){
+    if(password.length <1 && email.length <3){
     setpvalid(false)
     setevaild(false)
-   
+    setvalid(true)
 }else{
     setpvalid(true)
+    setevaild(true)
 
 }
 
