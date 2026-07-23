@@ -45,6 +45,7 @@ logindetail.then(function(data){
          setheadvaild(false)
          setemail("")
          setpassword("")
+        
       }
     })
   
@@ -52,9 +53,10 @@ logindetail.then(function(data){
     if(password.length <1 && email.length <3){
     setpvalid(false)
     setevaild(false)
-   
+    setvalid(true)
 }else{
     setpvalid(true)
+    setevaild(true)
 
 }
 
